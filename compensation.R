@@ -11,3 +11,15 @@ cor(churn$MonthlyRate, churn$MonthlyIncome)
 # hist
 # bar chart by years exp
 # by job title and level
+
+# salaryhike?
+summary(churn$PercentSalaryHike)
+
+churn %>%
+  group_by(Attrition) %>%
+  summarize(AvgPerHike = mean(PercentSalaryHike))
+
+churn %>%
+  ggplot(aes(x=PercentSalaryHike)) +
+  geom_histogram() +
+  facet_wrap(~Attrition)
